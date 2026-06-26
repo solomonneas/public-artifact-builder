@@ -1,0 +1,6 @@
+services:
+  web:
+    image: sample-ops-dashboard:latest
+  redis:
+    image: redis:7
+

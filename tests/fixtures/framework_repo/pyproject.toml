@@ -1,0 +1,8 @@
+[project]
+name = "framework-fixture"
+dependencies = [
+  "flask",
+  "sqlalchemy",
+  "celery",
+]
+

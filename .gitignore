@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+.artifacts/
+artifacts/
+.tmp/
+
+
+# Local brigade memory (cards are local-only, never committed)
+/memory/
+.brigade/
+.claude/

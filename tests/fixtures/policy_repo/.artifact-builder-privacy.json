@@ -1,0 +1,5 @@
+{
+  "allow": ["public@example.com"],
+  "deny": ["ExamplePrivateTenant"]
+}
+

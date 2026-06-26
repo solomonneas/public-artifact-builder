@@ -1,0 +1,17 @@
+#!/bin/bash
+# Single verification entrypoint. AGENTS.md's Definition of Done and CI both
+# defer to this file, so the gate lives in exactly one place.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+# Keep image rendering a stub; no external API calls during verification.
+unset OPENAI_API_KEY
+
+VENV=${VENV:-.venv/bin}
+
+"$VENV/pytest"
+"$VENV/artifact-builder" doctor --format json
+"$VENV/artifact-builder" analyze tests/fixtures/sample_repo --privacy strict --out .artifacts/ci-sample --format json
+"$VENV/artifact-builder" review .artifacts/ci-sample --format json
+"$VENV/artifact-builder" approve .artifacts/ci-sample --format json
+test -z "$(git ls-files .artifacts artifacts .venv)"   # CI enforces this
